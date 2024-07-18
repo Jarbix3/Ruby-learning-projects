@@ -1,12 +1,23 @@
-def substrings(string, dictionary)
-    output_hash = {}
-    dictionary.each do |substring|
-      output_hash[substring] = string.downcase.scan(substring).count if string.downcase.include?(substring)
-    end
+dictionary = ["below","down","go","going","horn","how","howdy","it","i","low","own","part","partner","sit"]
 
-    output_hash
+
+def substrings(string, dictionary)
+   hash = {}
+    
+    string_arr = string.downcase.split
+
+    string_arr.each do |string|
+        dictionary.each do |word|
+            if string.include?(word)
+                if hash.has_key?(word)
+                    hash[word] += 1
+                else hash[word] = 1
+                end
+            end
+        end
+    end 
+  puts hash
 end
 print "Write your string: "
 str = gets.chomp
-dictionary = ["below","down","go","going","horn","how","howdy","it","i","low","own","part","partner","sit"]
 substrings(str,dictionary)
